@@ -1,6 +1,5 @@
 package tests;
 
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -35,7 +34,7 @@ public class AddingAddressNew {
     public void goToTheAdressTab() {
 
         AssertsMethods checkWww = new AssertsMethods(driver);
-        assertEquals("https://mystore-testlab.coderslab.pl/index.php?controller=address", checkWww.checkURL());
+        Assert.assertEquals("https://mystore-testlab.coderslab.pl/index.php?controller=address", checkWww.checkURL());
     }
 
     @Then("^fill in the form with data \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\"$")
@@ -44,7 +43,7 @@ public class AddingAddressNew {
         newAddresPage.submmittingAddres(alias, address, postalCode, city, country, phone);
 
         AssertsMethods checkSuccesCreateNewAddress = new AssertsMethods(driver);
-        assertEquals("Address successfully added!", checkSuccesCreateNewAddress.checkConfirmationSaveAddress());
+        Assert.assertEquals("Address successfully added!", checkSuccesCreateNewAddress.checkConfirmationSaveAddress());
 
 
 
@@ -56,7 +55,19 @@ public class AddingAddressNew {
     public void checkNewCreateAddres() {
 
         AssertsMethods nameAdded = new AssertsMethods(driver);
-        Assert.assertEquals("Adam Adam", nameAdded.checkNameAdded());
+        String confirmationText=nameAdded.getSubmitConfirmationMessage();
+        Assert.assertTrue(confirmationText.contains("Adam Adam"));
+        Assert.assertTrue(confirmationText.contains("Braci Mniejszych 1"));
+        Assert.assertTrue(confirmationText.contains("Warszawa"));
+        Assert.assertTrue(confirmationText.contains("01-999"));
+        Assert.assertTrue(confirmationText.contains("United Kingdom"));
+        Assert.assertTrue(confirmationText.contains("555333111"));
+
+
+
+
+
+
 
 
 

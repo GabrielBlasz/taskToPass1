@@ -22,8 +22,8 @@ public class AssertsMethods extends BasePage {
 
     //name
 
-    @FindBy(xpath = "//*[@id=\"address-18295\"]/div[1]/address/text()[1]")
-    private WebElement checkName;
+    @FindBy(css = "div.address-body")
+    private WebElement checkAddresConfirmation;
 
     //address
 
@@ -58,8 +58,8 @@ public class AssertsMethods extends BasePage {
 
    //////////assercje na sprawdzenie czy nowy adres się dobrze dodał
 
-   public String checkNameAdded(){              ///name
-        return checkName.getText();
+   public String getSubmitConfirmationMessage(){              ///name
+        return checkAddresConfirmation.getText();
    }
 
 
